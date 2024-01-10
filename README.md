@@ -37,11 +37,11 @@ router = APIRouter(dependencies=[Depends(zeus().thunder)])
 
 @router.get("/")
 async def hander():
-return { "message": "lorem ipsum" }
+    return { "message": "lorem ipsum" }
 
 @router.options("/")
 async def options_hander():
-return None
+    return None
 ```
 
 ### Specific Route
@@ -58,22 +58,22 @@ router = APIRouter()
 @router.get("/")
 @zeus().smite
 def synchronous_handler(request: Request, response: Response):
-return { "message": "lorem ipsum" }
+    return { "message": "lorem ipsum" }
 
 # Asynchronous example
 @router.get("/")
 @zeus().smite
 async def asynchronous_handler(request: Request, response: Response):
-return { "message": "lorem ipsum" }
+    return { "message": "lorem ipsum" }
 
 # Pydantic example
 class Item(BaseModel):
-name: str
+    name: str
 
 @router.post("/")
 @zeus().smite
 async def asynchronous_handler(request: Request, response: Response, item: Item):
-return { "message": item }
+    return { "message": item }
 ```
 
 # Changelog
