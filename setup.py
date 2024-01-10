@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setuptools.setup(
     name="pyzeus",
-    version="0.1.1",
+    version="0.1.2",
     description="The cors middleware that enables a FastAPI server to handle cors requests, specifically, on the router and individual route level. It also handles preflight requests :)",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -29,7 +29,7 @@ setuptools.setup(
         "pyzeus",
     ],
     include_package_data=True,
-    install_requires=["fastapi", "functools", "typing_extensions"],
+    install_requires=["fastapi"],
     package_dir={"": "src"},
     python_requires=">=3.0",
 )

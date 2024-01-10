@@ -6,6 +6,18 @@
 
 The cors middleware that enables a [FastAPI](https://fastapi.tiangolo.com) server to handle cors requests. It also handles preflight requests 😃.
 
+## Installation
+
+```py
+pip install pyzeus
+```
+
+or
+
+```py
+pip3 install pyzeus
+```
+
 ## Default Response Headers
 
 If no options are provided, the response headers will be as follows:
@@ -46,7 +58,7 @@ async def options_hander():
 
 ### Specific Route
 
-This implements a sync or async agnostic decorator that requires you to add request and response parameters in your route handler. Worry not, it works if you have pydanyic classes too!
+This implements a sync or async agnostic decorator that requires you to add request and response parameters in your route handler. Worry not, it works if you have pydanyic classes too! Needs python 3.8+ or run `pip install typing_extensions`
 
 ```py
 from pyzeus import zeus
@@ -81,6 +93,13 @@ async def asynchronous_handler(request: Request, response: Response, item: Item)
 ## v0.1.x
 
 <details open>
+<summary><strong>v0.1.2</strong></summary>
+
+- Removed `functools`, and `typing_extensions` from dependencies
+
+</details>
+
+<details>
 <summary><strong>v0.1.1</strong></summary>
 
 - Added changelog to README
