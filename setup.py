@@ -29,6 +29,7 @@ setuptools.setup(
         "pyzeus",
     ],
     include_package_data=True,
+    install_requires=["fastapi", "functools", "typing_extensions"],
     package_dir={"": "src"},
     python_requires=">=3.0",
 )

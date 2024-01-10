@@ -75,3 +75,22 @@ name: str
 async def asynchronous_handler(request: Request, response: Response, item: Item):
 return { "message": item }
 ```
+
+# Changelog
+
+## v0.1.x
+
+<details open>
+<summary><strong>v0.1.1</strong></summary>
+
+- Added changelog to README
+- Added dependencies
+
+</details>
+
+<details>
+<summary><strong>v0.1.0</strong></summary>
+
+- Initial release
+
+</details>
