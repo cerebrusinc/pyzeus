@@ -25,14 +25,14 @@ If no options are provided, the response headers will be as follows:
 ```txt
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
-Access-Control-Allow-Headers: Content-Type
+Access-Control-Allow-Headers: Content-Type,Origin
 Access-Control-Max-Age: 5
 
 ```
 
 #### NOTES
 
-1. The allow_headers will always append `Content-Type` to your response headers so no need to add it to the list
+1. The allow_headers will always append `Content-Type` and `Origin` to your response headers so no need to add it to the list
 2. To handle preflight requests you will specifically need to add a `@router.options(...)` to your router
 
 ## Usage Examples
@@ -93,6 +93,13 @@ async def asynchronous_handler(request: Request, response: Response, item: Item)
 ## v0.1.x
 
 <details open>
+<summary><strong>v0.1.3</strong></summary>
+
+- Fixed Origin determination for not preflight requests
+
+</details>
+
+<details>
 <summary><strong>v0.1.2</strong></summary>
 
 - Removed `functools`, and `typing_extensions` from dependencies

@@ -39,13 +39,13 @@ def zeus(
     ```txt
     Access-Control-Allow-Origin: *
     Access-Control-Allow-Methods: GET,HEAD,PUT,PATCH,POST,DELETE
-    Access-Control-Allow-Headers: Content-Type
+    Access-Control-Allow-Headers: Content-Type,Origin
     Access-Control-Max-Age: 5
 
     ```
 
     ##### NOTES
-    1. The allow_headers will always append `Content-Type` to your response headers so no need to add it to the list
+    1. The allow_headers will always append `Content-Type` and `Origin` to your response headers so no need to add it to the list
     2. To handle preflight requests you will specifically need to add a `@router.options(...)` to your router
 
     ### Usage Examples
@@ -114,6 +114,9 @@ def zeus(
 
     if "Content-Type" not in __allowed_headers:
         __allowed_headers.append("Content-Type")
+
+    if "Origin" not in __allowed_headers:
+        __allowed_headers.append("Origin")
 
     __max_age: int = 5 if not max_age else max_age
 
@@ -222,14 +225,14 @@ def zeus(
                 res.status_code = status.HTTP_406_NOT_ACCEPTABLE
                 raise HTTPException(status_code=406, detail="Not acceptable")
         else:
-            host = req.headers["host"]
+            origin = req.headers["origin"] if req.headers.get("origin") else "*"
             is_valid_origin: bool = (
-                True if __origins == "*" else __is_origin__(path=host)
+                True if __origins == "*" else __is_origin__(path=origin)
             )
             is_valid_method = __is_valid_method__(method=req.method)
 
             if is_valid_origin and is_valid_method:
-                __valid_req_handler__(res=res, origin=host)
+                __valid_req_handler__(res=res, origin=origin)
 
             elif not is_valid_method:
                 res.status_code = status.HTTP_405_METHOD_NOT_ALLOWED
